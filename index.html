@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Z2H Design Studio | Imagination To Reality</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#000;
+      color:#fff;
+      overflow-x:hidden;
+      min-height:100vh;
+      position:relative;
+    }
+
+    body::before{
+      content:'';
+      position:absolute;
+      width:700px;
+      height:700px;
+      background:radial-gradient(circle, rgba(255,255,255,0.12), transparent 70%);
+      top:-250px;
+      left:50%;
+      transform:translateX(-50%);
+      filter:blur(50px);
+      z-index:0;
+    }
+
+    body::after{
+      content:'';
+      position:absolute;
+      width:400px;
+      height:400px;
+      background:radial-gradient(circle, rgba(255,255,255,0.06), transparent 70%);
+      bottom:-150px;
+      right:-100px;
+      filter:blur(50px);
+      z-index:0;
+    }
+
+    .container{
+      position:relative;
+      z-index:1;
+      width:100%;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px 20px;
+    }
+
+    .content{
+      width:100%;
+      max-width:1300px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .left{
+      animation:fadeUp 1s ease;
+    }
+
+    .logo{
+      width:180px;
+      margin-bottom:25px;
+      filter:drop-shadow(0 0 20px rgba(255,255,255,0.2));
+    }
+
+    h1{
+      font-size:70px;
+      line-height:1;
+      font-weight:800;
+      margin-bottom:15px;
+    }
+
+    .gray{
+      color:#bdbdbd;
+    }
+
+    .tagline{
+      letter-spacing:8px;
+      color:#9f9f9f;
+      text-transform:uppercase;
+      margin-bottom:30px;
+      font-size:15px;
+    }
+
+    .description{
+      color:#d0d0d0;
+      font-size:18px;
+      line-height:1.9;
+      max-width:650px;
+      margin-bottom:40px;
+    }
+
+    .button-group{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+    }
+
+    .btn{
+      text-decoration:none;
+      padding:18px 30px;
+      border-radius:18px;
+      font-weight:600;
+      transition:0.35s ease;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:230px;
+      text-align:center;
+      font-size:15px;
+    }
+
+    .btn-primary{
+      background:#fff;
+      color:#000;
+      box-shadow:0 10px 30px rgba(255,255,255,0.18);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-5px) scale(1.03);
+      box-shadow:0 15px 40px rgba(255,255,255,0.28);
+    }
+
+    .btn-secondary{
+      border:1px solid rgba(255,255,255,0.2);
+      background:rgba(255,255,255,0.05);
+      color:#fff;
+      backdrop-filter:blur(10px);
+    }
+
+    .btn-secondary:hover{
+      background:#fff;
+      color:#000;
+      transform:translateY(-5px) scale(1.03);
+    }
+
+    .card{
+      position:relative;
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:35px;
+      padding:45px 35px;
+      backdrop-filter:blur(16px);
+      overflow:hidden;
+      animation:float 4s ease-in-out infinite;
+      box-shadow:0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .card::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg, rgba(255,255,255,0.08), transparent);
+    }
+
+    .custom-qr{
+      width:100%;
+      max-width:420px;
+      margin:auto;
+      background:white;
+      padding:15px;
+      border-radius:30px;
+      box-shadow:0 10px 40px rgba(0,0,0,0.35);
+    }
+
+    .custom-qr img{
+      width:100%;
+      border-radius:22px;
+      display:block;
+    }
+
+    .card h2{
+      text-align:center;
+      font-size:38px;
+      margin-top:28px;
+      margin-bottom:18px;
+    }
+
+    .card p{
+      text-align:center;
+      color:#cfcfcf;
+      line-height:1.9;
+      margin-bottom:28px;
+      font-size:16px;
+    }
+
+    .features{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:12px;
+    }
+
+    .feature{
+      padding:10px 18px;
+      border-radius:50px;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.08);
+      font-size:14px;
+      color:#fff;
+    }
+
+    .footer{
+      margin-top:35px;
+      text-align:center;
+      color:#9f9f9f;
+      font-size:14px;
+      line-height:2;
+    }
+
+    .footer a{
+      color:#fff;
+      text-decoration:none;
+    }
+
+    .footer a:hover{
+      text-decoration:underline;
+    }
+
+    @keyframes float{
+      0%,100%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-12px);
+      }
+    }
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(40px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0px);
+      }
+    }
+
+    @media(max-width:980px){
+
+      .content{
+        grid-template-columns:1fr;
+        text-align:center;
+      }
+
+      .description{
+        margin:auto auto 40px;
+      }
+
+      .button-group{
+        justify-content:center;
+      }
+
+      h1{
+        font-size:52px;
+      }
+
+      .tagline{
+        letter-spacing:5px;
+      }
+
+      .logo{
+        margin:auto auto 25px;
+      }
+    }
+
+    @media(max-width:600px){
+
+      h1{
+        font-size:42px;
+      }
+
+      .card{
+        padding:30px 22px;
+      }
+
+      .card h2{
+        font-size:28px;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .tagline{
+        font-size:12px;
+        letter-spacing:4px;
+      }
+
+      .description{
+        font-size:16px;
+      }
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="content">
+
+      <!-- LEFT SIDE -->
+      <div class="left">
+
+        <!-- LOGO -->
+        <img src="z2h-logo.png" class="logo" alt="Z2H Logo">
+
+        <h1>
+          Z2H <span class="gray">Design Studio</span>
+        </h1>
+
+        <div class="tagline">
+          IMAGINATION TO REALITY
+        </div>
+
+        <p class="description">
+          Welcome to Sri Lanka’s premier 3D printing and designing studio.
+          We transform ideas into reality through advanced 3D printing,
+          CAD designing, rapid prototyping, miniatures, custom products,
+          engineering solutions, and creative innovation.
+        </p>
+
+        <div class="button-group">
+
+          <!-- GOOGLE FORM -->
+          <a
+            class="btn btn-primary"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfRmWfU__tdll2tvkBcDVdatRA8PVudBmhwgSDQZT5_DhOXOw/viewform?usp=header"
+            target="_blank"
+          >
+            Join Through Google Form
+          </a>
+
+          <!-- WHATSAPP -->
+          <a
+            class="btn btn-secondary"
+            href="https://wa.me/94706760506?text=Hi%20Z2H%20Design%20Studio,%20I%20visited%20your%20exhibition!"
+            target="_blank"
+          >
+            Contact via WhatsApp
+          </a>
+
+          <!-- GOOGLE REVIEW -->
+          <a
+            class="btn btn-secondary"
+            href="https://share.google/Fid7BeruXt5r9ccqe"
+            target="_blank"
+          >
+            Leave a Google Review
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div>
+
+        <div class="card">
+
+          <!-- INSTAGRAM QR -->
+          <div class="custom-qr">
+
+            <img src="instagram-qr.png" alt="Instagram QR">
+
+          </div>
+
+          <h2>Follow Us On Instagram</h2>
+
+          <p>
+            Scan the QR code and follow Z2H Design Studio on Instagram
+            to stay updated with our latest 3D printing projects,
+            creative designs, prototypes, miniatures, and innovative works.
+          </p>
+
+          <div class="features">
+
+            <div class="feature">3D Printing</div>
+            <div class="feature">CAD Designing</div>
+            <div class="feature">Rapid Prototyping</div>
+            <div class="feature">Miniatures</div>
+            <div class="feature">Custom Products</div>
+
+          </div>
+
+          <div class="footer">
+
+            📧
+            <a href="mailto:z2h.designstudio@gmail.com">
+              z2h.designstudio@gmail.com
+            </a>
+
+            <br>
+
+            📱
+            <a href="https://wa.me/94706760506">
+              +94 70 676 0506
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
